@@ -222,9 +222,9 @@
         <GroupBox Header="Температура" Grid.Column="1" Grid.Row="1" Padding="5" Margin="3">
             <StackPanel>
                 <TextBlock Text="Температура воздуха"></TextBlock>
-                <TextBox x:Name="TemperatureAir" MaxLength="5" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                <TextBox x:Name="TemperatureAir" MaxLength="6" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
                 <TextBlock Text="Температура точки росы"></TextBlock>
-                <TextBox x:Name="TemperatureDewPoint" MaxLength="5" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                <TextBox x:Name="TemperatureDewPoint" MaxLength="6" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Давление" Grid.Column="2" Grid.Row="1" Padding="5" Margin="3">

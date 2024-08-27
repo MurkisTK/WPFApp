@@ -255,10 +255,10 @@ namespace ClientWPF
             tAir = double.Parse(TemperatureAir.Text);
             tDewPoint = double.Parse(TemperatureDewPoint.Text);
             temperatureNote += tAir < 0 ? "M" : "";
-            temperatureNote += string.Format("{0:d2}", (int)Math.Abs(Math.Round(tAir, 0, MidpointRounding.ToPositiveInfinity)));
+            temperatureNote += string.Format("{0:d2}", (int)Math.Abs(Math.Round(tAir + 0.000001, 0, MidpointRounding.AwayFromZero)));
             temperatureNote += "/";
-            temperatureNote += tDewPoint < 0 ? "M" : "";
-            temperatureNote += string.Format("{0:d2}", (int)Math.Abs(Math.Round(tDewPoint, 0, MidpointRounding.ToPositiveInfinity)));
+            temperatureNote += tDewPoint < 0 ? "M": "";
+            temperatureNote += string.Format("{0:d2}", (int)Math.Abs(Math.Round(tDewPoint + 0.000001, 0, MidpointRounding.AwayFromZero)));
             temperatureNote += " ";
 
             return temperatureNote;
