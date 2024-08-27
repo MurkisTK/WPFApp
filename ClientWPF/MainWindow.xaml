@@ -1,0 +1,253 @@
+﻿<Window x:Class="ClientWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" MinHeight="620" MinWidth="800" Height="620" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="20px"></RowDefinition>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Группа идентификации" Grid.Column="0" Grid.Row="0" Padding="5" Margin="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.3*"></RowDefinition>
+                    <RowDefinition Height="0.6*"></RowDefinition>
+                    <RowDefinition Height="0.2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <TextBlock Text="Аэродром"></TextBlock>
+                    <TextBox x:Name="NameField" MaxLength="4" Margin="0 3" Text="CCCC" BorderBrush="Black"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="Время"></TextBlock>
+                    <TextBox x:Name="DayField" MaxLength="4" Margin="0 3" Text="11" BorderBrush="Black"></TextBox>
+                    <TextBox x:Name="HourField" MaxLength="4" Margin="0 3" Text="11" BorderBrush="Black"></TextBox>
+                    <TextBox x:Name="MinuteField" MaxLength="4" Margin="0 3" Text="11" BorderBrush="Black"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Row="2">
+                    <TextBlock Text="Атрибуты"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox x:Name="CorCheckBox" Content="COR" IsChecked="False" Margin="0 0 20 0" BorderBrush="Black"></CheckBox>
+                        <CheckBox x:Name="AutoCheckBox" Content="AUTO" IsChecked="False" Margin="0 0 20 0" BorderBrush="Black" Checked="AutoCheckBox_Checked" Unchecked="AutoCheckBox_Checked"></CheckBox>
+                        <CheckBox x:Name="NilCheckBox" Content="NIL" IsChecked="False" Margin="0 0 20 0" BorderBrush="Black"></CheckBox>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Ветер" Grid.Column="1" Grid.Row="0" Padding="5" Margin="3">
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Средняя скорость ветра"></TextBlock>
+                    <TextBox x:Name="AverageWindSpeed" MaxLength="5" Margin="0 3" Text="5" BorderBrush="Black"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Максимальная скорость ветра"></TextBlock>
+                    <TextBox x:Name="MaxWindSpeed" MaxLength="5" Margin="0 3" Text="5" BorderBrush="Black"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Минимальное направление ветра"></TextBlock>
+                    <TextBox x:Name="MinWindDirection" MaxLength="5" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Среднее направление"></TextBlock>
+                    <TextBox x:Name="AverageWindDirection" MaxLength="5" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Максимальное направление ветра"></TextBlock>
+                    <TextBox x:Name="MaxWindDirection" MaxLength="5" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                </StackPanel>
+                <Grid Margin="0 3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Значения:" Grid.Column="0"></TextBlock>
+                    <RadioButton x:Name="KnotsButton" Content="KT" GroupName="SpeedGroup" 
+                                 IsChecked="False" Grid.Column="1" BorderBrush="Black"></RadioButton>
+                    <RadioButton x:Name="MetersButton"  Content="MPS" GroupName="SpeedGroup" 
+                                 IsChecked="True" Grid.Column="2" BorderBrush="Black"></RadioButton>
+                </Grid>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Видимость на ВПП" Grid.Row="0" Grid.Column="2" Padding="5" Margin="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24px"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Height="24" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="BorderRunwayVisibilities" Grid.Column="0" BorderThickness="1px" BorderBrush="Black">
+                        <ComboBox x:Name="RunwayVisibilities" BorderThickness="0"></ComboBox>
+                    </Border>
+                    <Button x:Name="RunwayAdd" Width="24" Height="24" HorizontalAlignment="Right" Grid.Column="1" Content="+" Click="RunwayAdd_Click" BorderBrush="Black"></Button>
+                    <Button x:Name="RunwayDelete" Width="24" Height="24" HorizontalAlignment="Right" Grid.Column="2" Content="-" Click="RunwayDelete_Click" BorderBrush="Black"></Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="Номер ВПП"></TextBlock>
+                        <TextBox x:Name="RunwayNumber" MaxLength="2" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                    </StackPanel>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Параллельность" Grid.Column="0"></TextBlock>
+                        <RadioButton x:Name="LeftParallel" BorderBrush="Black" Content="L" GroupName="ParallelIdentifiers" Grid.Column="1"></RadioButton>
+                        <RadioButton x:Name="CentralParallel" BorderBrush="Black" Content="C" GroupName="ParallelIdentifiers" Grid.Column="2"></RadioButton>
+                        <RadioButton x:Name="RightParallel" BorderBrush="Black" Content="R" GroupName="ParallelIdentifiers" Grid.Column="3"></RadioButton>
+                        <RadioButton x:Name="NoneParallel" BorderBrush="Black" Content="X" GroupName="ParallelIdentifiers" Grid.Column="4" IsChecked="True"></RadioButton>
+                    </Grid>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="Видимость"></TextBlock>
+                        <TextBox x:Name="RunwayVisibility" MaxLength="4" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                    </StackPanel>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Тенденция" Grid.Column="0"></TextBlock>
+                        <RadioButton x:Name="UpTendency" BorderBrush="Black" Content="U" GroupName="TendencyIdentifiers" Grid.Column="1"></RadioButton>
+                        <RadioButton x:Name="NormalTendency" BorderBrush="Black" Content="N" GroupName="TendencyIdentifiers" Grid.Column="2"></RadioButton>
+                        <RadioButton x:Name="DownTendency" BorderBrush="Black" Content="D" GroupName="TendencyIdentifiers" Grid.Column="3"></RadioButton>
+                        <RadioButton x:Name="NoTendency" BorderBrush="Black" Content="X" GroupName="TendencyIdentifiers" Grid.Column="4" IsChecked="True"></RadioButton>
+                    </Grid>
+                    <Button Grid.Row="4" Width="100" Content="Сохранить" x:Name="SaveRunway" Click="SaveRunway_Click" BorderBrush="Black"></Button>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Облачность" Grid.Column="0" Grid.Row="1" Padding="5" Margin="3">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24px"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Height="24" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="BorderCloudsBox" Grid.Column="0" BorderThickness="1px" BorderBrush="Black">
+                        <ComboBox x:Name="CloudsBox" BorderThickness="0"></ComboBox>
+                    </Border>
+                    <Button x:Name="CloudsAdd" Width="24" Height="24" HorizontalAlignment="Left" Grid.Column="1" Content="+" Click="CloudsAdd_Click" BorderBrush="Black" Grid.ColumnSpan="2" Margin="16,0,0,0"></Button>
+                    <Button x:Name="CloudsDelete" Width="24" Height="24" HorizontalAlignment="Right" Grid.Column="2" Content="-" Click="CloudsDelete_Click" BorderBrush="Black"></Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition Height="1.5*"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Text="Облака"></TextBlock>
+                        <RadioButton x:Name="FewClouds" BorderBrush="Black" Content="FEW" GroupName="CountIdentifiers" Grid.Column="0" Grid.Row="1" IsChecked="True"></RadioButton>
+                        <RadioButton x:Name="SctClouds" BorderBrush="Black" Content="SCT" GroupName="CountIdentifiers" Grid.Column="1" Grid.Row="1"></RadioButton>
+                        <RadioButton x:Name="BknClouds" BorderBrush="Black" Content="BKN" GroupName="CountIdentifiers" Grid.Column="2" Grid.Row="1"></RadioButton>
+                        <RadioButton x:Name="OvcClouds" BorderBrush="Black" Content="OVC" GroupName="CountIdentifiers" Grid.Column="3" Grid.Row="1"></RadioButton>
+                        <RadioButton x:Name="VvClouds" BorderBrush="Black" Content="VV" GroupName="CountIdentifiers" Grid.Column="0" Grid.Row="2"></RadioButton>
+                        <RadioButton x:Name="NscClouds" BorderBrush="Black" Content="NSC" GroupName="CountIdentifiers" Grid.Column="1" Grid.Row="2"></RadioButton>
+                        <RadioButton x:Name="NcdClouds" BorderBrush="Black" Content="NCD" GroupName="CountIdentifiers" Grid.Column="2" Grid.Row="2"></RadioButton>
+                        <RadioButton x:Name="NoneClouds" BorderBrush="Black" Content="X" GroupName="CountIdentifiers" Grid.Column="3" Grid.Row="2"></RadioButton>
+                    </Grid>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="Видимость"></TextBlock>
+                        <TextBox x:Name="CloudsDistance" MaxLength="4" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                    </StackPanel>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Тип" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4"></TextBlock>
+                        <RadioButton x:Name="CBType" BorderBrush="Black" Content="CB" GroupName="TypeIdentifiers" Grid.Column="0" Grid.Row="1"></RadioButton>
+                        <RadioButton x:Name="TCUType" BorderBrush="Black" Content="TCU" GroupName="TypeIdentifiers" Grid.Column="1" Grid.Row="1"></RadioButton>
+                        <RadioButton x:Name="UndefinedType" BorderBrush="Black" Content="///" GroupName="TypeIdentifiers" Grid.Column="2" Grid.Row="1"></RadioButton>
+                        <RadioButton x:Name="NoneType" BorderBrush="Black" Content="X" GroupName="TypeIdentifiers" Grid.Column="3" IsChecked="True" Grid.Row="1"></RadioButton>
+                    </Grid>
+                    <Button Grid.Row="3" Width="100" Content="Сохранить" x:Name="SaveCloud"  BorderBrush="Black" Click="SaveCloud_Click"></Button>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Температура" Grid.Column="1" Grid.Row="1" Padding="5" Margin="3">
+            <StackPanel>
+                <TextBlock Text="Температура воздуха"></TextBlock>
+                <TextBox x:Name="TemperatureAir" MaxLength="5" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+                <TextBlock Text="Температура точки росы"></TextBlock>
+                <TextBox x:Name="TemperatureDewPoint" MaxLength="5" Margin="0 3" Text="0" BorderBrush="Black"></TextBox>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Давление" Grid.Column="2" Grid.Row="1" Padding="5" Margin="3">
+            <StackPanel>
+                <TextBlock Text="Атмосферное давление"></TextBlock>
+                <TextBox x:Name="Pressure" MaxLength="5" Margin="0 3" Text="1000" BorderBrush="Black"></TextBox>
+            </StackPanel>
+        </GroupBox>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="MakeNote_Click" Width="100" Height="30" Content="Составить запись" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="Black"></Button>
+            <Button Click="SendNote_Click" Width="100" Height="30" Content="Отправить" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="Black"></Button>
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled" Grid.Column="1" Grid.Row="0" VerticalAlignment="Bottom">
+                <TextBox x:Name="MetarEndNote" Text="METAR" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" IsReadOnly="True" BorderThickness="0"></TextBox>
+            </ScrollViewer>
+        </Grid>
+        <StatusBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+            <TextBlock x:Name="StatusBarText"></TextBlock>
+        </StatusBar>
+    </Grid>
+</Window>
+
